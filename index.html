@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Graduate Exam Form </title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      margin: 0;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .form-section,
+    .preview-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .preview-section h3 {
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1rem;
+    }
+
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      .preview-section,
+      .preview-section * {
+        visibility: visible;
+      }
+
+      .preview-section {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      button,
+      .form-section {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Graduate-Level Exam Form Generator</h2>
+
+    <div class="form-section">
+      <label>Institution Name</label>
+      <input type="text" id="institution" />
+
+      <label>Department</label>
+      <input type="text" id="department" />
+
+      <label>Course Title</label>
+      <input type="text" id="courseTitle" />
+
+      <label>Course Code</label>
+      <input type="text" id="courseCode" />
+
+      <label>Exam Type</label>
+      <select id="examType">
+        <option value="Midterm">Midterm</option>
+        <option value="Final">Final</option>
+        <option value="Comprehensive">Comprehensive</option>
+      </select>
+
+      <label>Date</label>
+      <input type="date" id="examDate" />
+
+      <label>Duration</label>
+      <input type="text" id="duration" placeholder="e.g., 2 hours" />
+
+      <label>Instructor Name</label>
+      <input type="text" id="instructor" />
+
+      <label>Student Name</label>
+      <input type="text" id="studentName" />
+
+      <label>Student ID</label>
+      <input type="text" id="studentId" />
+
+      <label>Instructions</label>
+      <textarea id="instructions" rows="4">
+Please read all questions carefully. Show all working. Academic integrity must be upheld.
+      </textarea>
+
+      <button onclick="generateForm()">Generate Preview</button>
+      <button onclick="window.print()">Print Form</button>
+    </div>
+
+    <div class="preview-section" id="previewSection" style="display: none;">
+      <h3>Graduate-Level Exam Form</h3>
+      <p><strong>Institution:</strong> <span id="outInstitution"></span></p>
+      <p><strong>Department:</strong> <span id="outDepartment"></span></p>
+      <p><strong>Course Title:</strong> <span id="outCourseTitle"></span></p>
+      <p><strong>Course Code:</strong> <span id="outCourseCode"></span></p>
+      <p><strong>Exam Type:</strong> <span id="outExamType"></span></p>
+      <p><strong>Date:</strong> <span id="outExamDate"></span></p>
+      <p><strong>Duration:</strong> <span id="outDuration"></span></p>
+      <p><strong>Instructor:</strong> <span id="outInstructor"></span></p>
+      <p><strong>Student Name:</strong> <span id="outStudentName"></span></p>
+      <p><strong>Student ID:</strong> <span id="outStudentId"></span></p>
+      <p><strong>Instructions:</strong></p>
+      <p id="outInstructions"></p>
+
+      <p style="margin-top: 2rem;"><strong>Academic Integrity:</strong><br />
+        I hereby declare that I will not give or receive unauthorized aid in this examination.</p>
+      <p>Signature: ___________________________</p>
+    </div>
+  </div>
+
+  <script>
+    function generateForm() {
+      document.getElementById('previewSection').style.display = 'block';
+
+      document.getElementById('outInstitution').innerText = document.getElementById('institution').value;
+      document.getElementById('outDepartment').innerText = document.getElementById('department').value;
+      document.getElementById('outCourseTitle').innerText = document.getElementById('courseTitle').value;
+      document.getElementById('outCourseCode').innerText = document.getElementById('courseCode').value;
+      document.getElementById('outExamType').innerText = document.getElementById('examType').value;
+      document.getElementById('outExamDate').innerText = document.getElementById('examDate').value;
+      document.getElementById('outDuration').innerText = document.getElementById('duration').value;
+      document.getElementById('outInstructor').innerText = document.getElementById('instructor').value;
+      document.getElementById('outStudentName').innerText = document.getElementById('studentName').value;
+      document.getElementById('outStudentId').innerText = document.getElementById('studentId').value;
+      document.getElementById('outInstructions').innerText = document.getElementById('instructions').value;
+    }
+  </script>
+</body>
+</html>
